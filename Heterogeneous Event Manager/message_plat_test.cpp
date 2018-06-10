@@ -6,7 +6,9 @@
 //
 
 #include <stdio.h>
+#include <vector>
 #include <iostream>
+
 //#include "MessagingPlatform/OnValChanged.h"
 
 class TestEvent
@@ -106,12 +108,12 @@ private:
 class SendAndRec
 {
     simpleState state = simpleState::OFF;
-    void* subsList[10];
-    Ptr_Type_Storage::ptr_type subsTypes[10];
+    std::vector<void*> subsList;
+    std::vector<Ptr_Type_Storage::ptr_type> subsTypes;
     unsigned int subsCount = 0;
     
-    void* subscriptions[10];
-    Ptr_Type_Storage::ptr_type subscriptionTypes[10];
+    std::vector<void*> subscriptions;
+    std::vector<Ptr_Type_Storage::ptr_type> subscriptionTypes;
     unsigned int subscriptionsCount = 0;
     
 public:
@@ -122,12 +124,21 @@ public:
     template <typename T>
     void subscribe(T* obj_ptr, Ptr_Type_Storage::ptr_type ptType){
         obj_ptr->addSubscription(this, Ptr_Type_Storage::ptr_type::SAR);
-        subsList[subsCount] = (void*)obj_ptr;
-        subsTypes[subsCount] = ptType;
+        subsList.push_back((void*)obj_ptr);
+        subsTypes.push_back(ptType);
         ++subsCount;
+        std::cout << "subs count is " << subsCount << std::endl;
     }
     void unsubscribe(void* remove_this){
         std::cout << "unsubscribing this pointer" << std::endl;
+        for (int i = 0; i < subsList.size() ; ++ i){
+            if(subsList[i] == remove_this){
+                subsList.erase(subsList.begin() + i);
+                --subsCount;
+                std::cout << "subs count is " << subsCount << std::endl;
+                break;
+            }
+        }
     }
     
     void set_state(simpleState s){
@@ -138,8 +149,8 @@ public:
         return std::to_string(state);
     }
     void addSubscription(void* pub_obj_ptr, Ptr_Type_Storage::ptr_type ptType){
-        subscriptions[subscriptionsCount] = pub_obj_ptr;
-        subscriptionTypes[subscriptionsCount] = ptType;
+        subscriptions.push_back(pub_obj_ptr);
+        subscriptionTypes.push_back(ptType);
         ++subscriptionsCount;
     }
     ~SendAndRec(){
@@ -349,13 +360,19 @@ int main()
     //
     //    s3.set_state(simpleState::ON);
     
-    std::cout << sar1.get_state() << std::endl;
-    std::cout << sar2.get_state() << std::endl;
+    std::cout << "sar1 state: " << sar1.get_state() << std::endl;
+    std::cout << "sar2 state: " << sar2.get_state() << std::endl;
     sar1.subscribe<SendAndRec>(&sar2, Ptr_Type_Storage::SAR);
+    {
+        SendAndRec sar3;
+        std::cout << "sar3 state: " << sar3.get_state() << std::endl;
+        sar1.subscribe<SendAndRec>(&sar3, Ptr_Type_Storage::SAR);
+        std:: cout << "sar 3 destroyed" << std::endl;
+    }
     
     sar1.set_state(simpleState::ON);
-    std::cout << sar1.get_state() << std::endl;
-    std::cout << sar2.get_state() << std::endl;
+    std::cout << "sar1 state: " << sar1.get_state() << std::endl;
+    std::cout << "sar2 state: " << sar2.get_state() << std::endl;
     
     //    Class1 c1;
     //    Class1 c3;
