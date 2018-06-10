@@ -513,14 +513,17 @@ void Ptr_Type_Storage::call_detach_sender(ptr_type type, void* to_detach){
 //
 int main()
 {
+    
     RecipientA ra1;
+    SendAndRec sar1;
     RecipientB rb1;
+    
     RecipientC rc1;
     //    Sender s1;
     //    Sender s2;
     //    Sender s3;
     
-    SendAndRec sar1;
+    
     SendAndRec sar2;
     
     //    s1.subscribe(&ra1, Ptr_Type_Storage::REC_A);
