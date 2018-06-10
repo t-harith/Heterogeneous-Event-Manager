@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		667C4EBE20CD88ED009C6270 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 667C4EBD20CD88ED009C6270 /* main.cpp */; };
+		667C4EBE20CD88ED009C6270 /* message_plat_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 667C4EBD20CD88ED009C6270 /* message_plat_test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		667C4EBA20CD88ED009C6270 /* Heterogeneous Event Manager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Heterogeneous Event Manager"; sourceTree = BUILT_PRODUCTS_DIR; };
-		667C4EBD20CD88ED009C6270 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		667C4EBD20CD88ED009C6270 /* message_plat_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = message_plat_test.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 		667C4EBC20CD88ED009C6270 /* Heterogeneous Event Manager */ = {
 			isa = PBXGroup;
 			children = (
-				667C4EBD20CD88ED009C6270 /* main.cpp */,
+				667C4EBD20CD88ED009C6270 /* message_plat_test.cpp */,
 			);
 			path = "Heterogeneous Event Manager";
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				667C4EBE20CD88ED009C6270 /* main.cpp in Sources */,
+				667C4EBE20CD88ED009C6270 /* message_plat_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
