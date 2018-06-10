@@ -1,12 +1,11 @@
 # Heterogeneous-Event-Manager
-An offshoot of the Mudbath repo, the heterogeneous event manager is an exploration of implementing multicasted delegates 
-and a observer model with varied sender and receiver types. 
+An offshoot of the Mudbath repo, the heterogeneous event manager is an exploration of implementing an observer model with multi-casted delegates and sender-receiver functionality with heterogenous object types. 
 
-Yet another event manager implemented in c++, but with a twist: more focus on subscribing to objects and dealing with all 
-events that they publish as opposed to subscribing to events, no matter which object publishes them.
+It is yet another event system implemented in c++, but with a twist; it focusses on subscribing to objects and dealing with all events they publish (as opposed to subscribing to events themselves).
 
-This could have been implemented with classes for senders, receivers (or both) with inheritence, dynamic polymorphism and
-the likes, but wheres the fun in that?
+It makes use of unions to keep track of pointers to multiple object types.
 
-Instead, you have this hacky, rather high-maintance, interface that stands as a testament to the fact that just because something
-can be done, doesn't always mean it should be :)
+This could have been implemented with classes for senders, and receivers, (or both) with inheritance, dynamic polymorphism and the likes, but where’s the fun in that?
+
+Instead, you have this hacky (and rather high-maintenance,) interface that stands as a testament to how much you can push the limits of c++.
+
